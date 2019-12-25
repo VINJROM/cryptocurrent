@@ -11,18 +11,28 @@ const Bar = styled.div`
   grid-template-columns: 180px auto 100px 100px;
 `;
 
+// used for adding shadow and effects to top-buttons
 const ControlButtonHover = styled.div`
   cursor: pointer;
   ${props =>
     props.active &&
     css`
-      color: blue;
-      text-shadow: 0px 0px 60px #03ff0;
+      text-shadow: 0px 0px 60px #03ff03;
     `}
 `;
 
+// houses the dashboard and settings buttons
 function ControlButton({ name, active }) {
-  return <ControlButtonHover active={active}>{name}</ControlButtonHover>;
+  return (
+  <ControlButtonHover active={active}>
+    {toProperCase(name)}
+  </ControlButtonHover>
+  );
+}
+
+// sets first character to uppercase
+function toProperCase(lower) {
+  return lower.charAt(0).toUpperCase() + lower.substr(1)
 }
 
 export default function() {
@@ -30,7 +40,7 @@ export default function() {
     <Bar>
       <Logo> CryptoCurrent </Logo>
       <div />
-      <ControlButton name="dashboard" />
+      <ControlButton active name="dashboard" />
       <ControlButton name="settings" />
     </Bar>
   );
