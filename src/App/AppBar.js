@@ -20,6 +20,11 @@ const ControlButtonHover = styled.div`
     css`
       text-shadow: 0px 0px 60px #03ff03;
     `}
+  ${props =>
+    props.hidden &&
+    css`
+      display: none;
+    `}
 `;
 
 // sets first character to uppercase
@@ -30,13 +35,13 @@ function toProperCase(lower) {
 // houses the dashboard and settings buttons
 function ControlButton({ name, active }) {
   return (
-    <AppContext.consumer>
+    <AppContext.Consumer>
       {({ page }) => (
         <ControlButtonHover active={page === name}>
           {toProperCase(name)}
         </ControlButtonHover>
       )}
-    </AppContext.consumer>
+    </AppContext.Consumer>
   );
 }
 
