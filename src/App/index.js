@@ -5,6 +5,7 @@ import AppLayout from "./AppLayout";
 import AppBar from "./AppBar";
 import { AppProvider } from "./AppProvider"; // wrapping import in {brackets} pulls "name" from object-export in targeted file
 
+
 class App extends Component {
   render() {
     return (

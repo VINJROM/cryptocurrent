@@ -2,11 +2,13 @@ import React from "react";
 
 export const AppContext = React.createContext();
 
+// setting up main Consumer to be used by Provider
 export class AppProvider extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      page: "settings"
+      page: "dashboard",
+      setPage: this.setPage
     };
   }
 

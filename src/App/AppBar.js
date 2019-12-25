@@ -1,6 +1,6 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import { AppContext } from "./AppProvider";
+import { AppContext, setPage } from "./AppProvider";
 
 const Logo = styled.div`
   font-size: 1.5em;
@@ -36,8 +36,11 @@ function toProperCase(lower) {
 function ControlButton({ name, active }) {
   return (
     <AppContext.Consumer>
-      {({ page }) => (
-        <ControlButtonHover active={page === name}>
+      {({ page, setPage }) => (
+        <ControlButtonHover
+          active={page === name}
+          onClick={() => setPage(name)}
+        >
           {toProperCase(name)}
         </ControlButtonHover>
       )}
