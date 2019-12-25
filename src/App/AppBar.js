@@ -1,5 +1,6 @@
 import React from "react";
 import styled, { css } from "styled-components";
+import { AppContext } from "./AppProvider";
 
 const Logo = styled.div`
   font-size: 1.5em;
@@ -21,18 +22,22 @@ const ControlButtonHover = styled.div`
     `}
 `;
 
+// sets first character to uppercase
+function toProperCase(lower) {
+  return lower.charAt(0).toUpperCase() + lower.substr(1);
+}
+
 // houses the dashboard and settings buttons
 function ControlButton({ name, active }) {
   return (
-  <ControlButtonHover active={active}>
-    {toProperCase(name)}
-  </ControlButtonHover>
+    <AppContext.consumer>
+      {({ page }) => (
+        <ControlButtonHover active={page === name}>
+          {toProperCase(name)}
+        </ControlButtonHover>
+      )}
+    </AppContext.consumer>
   );
-}
-
-// sets first character to uppercase
-function toProperCase(lower) {
-  return lower.charAt(0).toUpperCase() + lower.substr(1)
 }
 
 export default function() {
