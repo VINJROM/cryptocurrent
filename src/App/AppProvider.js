@@ -13,7 +13,7 @@ export class AppProvider extends React.Component {
     };
   }
 
-  confirmFavorites() {
+  confirmFavorites = () => {
     this.setState({
       firstVisit: false,
       page: "dashboard"

@@ -4,7 +4,8 @@ import { AppContext } from "../App/AppProvider";
 
 const ConfirmButtonStyled = styled.div`
   margin: 20px;
-  color: blue;
+  color: green;
+  cursor: pointer;
 `;
 
 export const CenterDiv = styled.div`
@@ -25,4 +26,3 @@ export default function() {
     </AppContext.Consumer>
   );
 }
-;
