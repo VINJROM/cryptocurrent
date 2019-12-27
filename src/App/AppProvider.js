@@ -14,12 +14,14 @@ export class AppProvider extends React.Component {
     };
   }
 
+
+
   confirmFavorites = () => {
     this.setState({
       firstVisit: false,
       page: "dashboard"
     });
-    // sets favorite items in localStorage
+    // sets favorite items to localStorage
     localStorage.setItem(
       "cryptoCurrent",
       JSON.stringify({
