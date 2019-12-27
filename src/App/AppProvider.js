@@ -8,13 +8,21 @@ export class AppProvider extends React.Component {
     super(props);
     this.state = {
       page: "dashboard",
-      ...this.setSettings(), // function sets page to setting
+      ...this.setSettings(), // function sets page to "setting"
       setPage: this.setPage
     };
   }
 
+  confirmFavorites() {
+    console.log("Confirmed");
+  }
+
   setSettings() {
-    return {page: "settings"}
+    let cryptoCurrentData = JSON.parse(localStorage.getItem("cryptoCurrent")); // gets data from localStorage
+    if (!cryptoCurrentData) {
+      return { page: "settings", firstVisit: true };
+    }
+    return {};
   }
 
   // function sets page on app
@@ -23,7 +31,7 @@ export class AppProvider extends React.Component {
   render() {
     return (
       <AppContext.Provider value={this.state}>
-       {/* passes children though to provider */}
+        {/* passes children though to provider */}
         {this.props.children}
       </AppContext.Provider>
     );
