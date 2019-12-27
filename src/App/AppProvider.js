@@ -1,5 +1,7 @@
 import React from "react";
 
+const cc = require("cryptocompare");
+
 export const AppContext = React.createContext();
 
 // setting up main Consumer to be used by Provider
@@ -14,7 +16,14 @@ export class AppProvider extends React.Component {
     };
   }
 
+  componentDidMount = () => {
+    this.fetchCoins();
+  };
 
+  fetchCoins = async () => {
+    let coinList = await cc.coinList();
+    console.log(coinList);
+  };
 
   confirmFavorites = () => {
     this.setState({
