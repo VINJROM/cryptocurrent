@@ -8,8 +8,13 @@ export class AppProvider extends React.Component {
     super(props);
     this.state = {
       page: "dashboard",
+      ...this.setSettings(), // function sets page to setting
       setPage: this.setPage
     };
+  }
+
+  setSettings() {
+    return {page: "settings"}
   }
 
   // function sets page on app
