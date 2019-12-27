@@ -1,5 +1,14 @@
 import React from "react";
+import {AppContext} from "../App/AppProvider";
 
-export default function Welcome(props) {
-  return <h1>Welcome to CryptoCurrent</h1>;
+export default function ({firstVisit}) {
+  return (
+    <AppContext.Consumer>
+      {({firstVisit}) =>
+      firstVisit ? <div>
+        Welcome to CryptoCurrent, please select your favorite crypto-currencies to begin. {' '}
+      </div> : null
+      }
+    </AppContext.Consumer>
+  )
 }

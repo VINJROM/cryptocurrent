@@ -14,7 +14,17 @@ export class AppProvider extends React.Component {
   }
 
   confirmFavorites() {
-    console.log("Confirmed");
+    this.setState({
+      firstVisit: false,
+      page: "dashboard"
+    });
+    // sets favorite items in localStorage
+    localStorage.setItem(
+      "cryptoCurrent",
+      JSON.stringify({
+        test: "hello"
+      })
+    );
   }
 
   setSettings() {
