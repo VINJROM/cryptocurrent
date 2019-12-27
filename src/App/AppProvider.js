@@ -12,11 +12,13 @@ export class AppProvider extends React.Component {
     };
   }
 
+  // function sets page on app
   setPage = page => this.setState({ page });
 
   render() {
     return (
       <AppContext.Provider value={this.state}>
+       {/* passes children though to provider */}
         {this.props.children}
       </AppContext.Provider>
     );
