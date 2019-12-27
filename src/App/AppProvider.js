@@ -9,7 +9,8 @@ export class AppProvider extends React.Component {
     this.state = {
       page: "dashboard",
       ...this.setSettings(), // function sets page to "setting"
-      setPage: this.setPage
+      setPage: this.setPage,
+      confirmFavorites: this.confirmFavorites
     };
   }
 
@@ -25,7 +26,7 @@ export class AppProvider extends React.Component {
         test: "hello"
       })
     );
-  }
+  };
 
   setSettings() {
     let cryptoCurrentData = JSON.parse(localStorage.getItem("cryptoCurrent")); // gets data from localStorage
