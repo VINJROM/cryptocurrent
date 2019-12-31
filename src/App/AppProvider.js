@@ -26,7 +26,7 @@ export class AppProvider extends React.Component {
     this.setState({ coinList });
     console.log(coinList);
   };
-  
+
   // sets favorite items to localStorage
   confirmFavorites = () => {
     this.setState({
@@ -54,8 +54,8 @@ export class AppProvider extends React.Component {
 
   render() {
     return (
+      // passes children through to provider
       <AppContext.Provider value={this.state}>
-        {/* passes children though to provider */}
         {this.props.children}
       </AppContext.Provider>
     );
