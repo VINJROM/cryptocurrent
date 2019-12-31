@@ -4,7 +4,7 @@ const cc = require("cryptocompare");
 
 export const AppContext = React.createContext();
 
-// setting up main Consumer to be used by Provider
+// sets up favorites-provider to be used by consumer
 export class AppProvider extends React.Component {
   constructor(props) {
     super(props);
@@ -23,16 +23,16 @@ export class AppProvider extends React.Component {
 
   fetchCoins = async () => {
     let coinList = await cc.coinList().Data;
-    this.setState({coinList})
+    this.setState({ coinList });
     console.log(coinList);
   };
-
+  
+  // sets favorite items to localStorage
   confirmFavorites = () => {
     this.setState({
       firstVisit: false,
       page: "dashboard"
     });
-    // sets favorite items to localStorage
     localStorage.setItem(
       "cryptoCurrent",
       JSON.stringify({
