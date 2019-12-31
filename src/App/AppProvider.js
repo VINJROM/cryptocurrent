@@ -16,6 +16,7 @@ export class AppProvider extends React.Component {
     };
   }
 
+  // pulls coins from CC
   componentDidMount = () => {
     this.fetchCoins();
   };
