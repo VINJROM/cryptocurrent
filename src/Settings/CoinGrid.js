@@ -4,12 +4,20 @@ import { AppContext } from "../App/AppProvider";
 
 export const CoinGridStyled = styled.div`
   display: grid;
+  grid-template-columns: repeat(5, 1fr);
 `;
+
 export default function() {
   return (
     <AppContext.Consumer>
       {({ coinList }) => (
-        <CoinGridStyled>{Object.keys(coinList).length}</CoinGridStyled>
+        <CoinGridStyled>
+          {Object.keys(coinList).map((
+            coinKey // displays coin-list
+          ) => (
+            <div>{coinKey}</div>
+          ))}
+        </CoinGridStyled>
       )}
     </AppContext.Consumer>
   );
