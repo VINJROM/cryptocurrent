@@ -18,7 +18,7 @@ export const CenterDiv = styled.div`
   justify-content: center;
 `;
 
-// 
+// adds 'favorites' to list
 export default function() {
   return (
     <AppContext.Consumer>
