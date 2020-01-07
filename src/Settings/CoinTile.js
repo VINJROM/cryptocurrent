@@ -4,6 +4,8 @@ import { SelectableTile } from "../Shared/Tile";
 import CoinHeaderGrid from "./CoinHeaderGrid";
 import CoinImage from "../Shared/CoinImage"
 
+
+// pulls CoinName, Symbol, and image from CC
 export default function({ coinKey }) {
   return (
     <AppContext.Consumer>

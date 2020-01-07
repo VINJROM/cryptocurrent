@@ -14,9 +14,10 @@ function getCoinsToDisplay(coinList) {
   return Object.keys(coinList).slice(0, 100); // gives us first 100 coins
 }
 
+// displays 
 export default function() {
   return (
-    <AppContext.Consumer>
+    <AppContext.Consumer> 
       {({ coinList }) => (
         <CoinGridStyled>
           {getCoinsToDisplay(coinList).map(coinKey => (
