@@ -14,7 +14,7 @@ function getCoinsToDisplay(coinList, topSection) {
   return Object.keys(coinList).slice(0, topSection ? 10 : 100); // gives us first 100 coins
 }
 
-// displays
+// displays stylized coin list
 export default function({ topSection }) {
   return (
     <AppContext.Consumer>
