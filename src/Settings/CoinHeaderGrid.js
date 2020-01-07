@@ -10,7 +10,7 @@ export const CoinSymbol = styled.div`
   justify-self: right;
 `;
 
-// stylizes CoinTile data
+// sets style to CoinTile data
 export default function({ name, symbol }) {
   return (
     <CoinHeaderGridStyled>
