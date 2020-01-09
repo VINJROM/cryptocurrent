@@ -4,7 +4,7 @@ import { SelectableTile, DisabledTile, DeletableTile } from "../Shared/Tile";
 import CoinHeaderGrid from "./CoinHeaderGrid";
 import CoinImage from "../Shared/CoinImage";
 
-// pulls CoinName, Symbol, and image from CC
+// pulls CoinName, Symbol, and image from CC through coinKey
 export default function({ coinKey, topSection }) {
   return (
     <AppContext.Consumer>
@@ -18,7 +18,11 @@ export default function({ coinKey, topSection }) {
 
         return (
           <TileClass>
-            <CoinHeaderGrid name={coin.CoinName} symbol={coin.Symbol} />
+            <CoinHeaderGrid
+              topSection={topSection}
+              name={coin.CoinName}
+              symbol={coin.Symbol}
+            />
             <CoinImage coin={coin} />
           </TileClass>
         );
