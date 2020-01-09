@@ -1,4 +1,5 @@
 import React from "react";
+import _ from "lodash";
 
 const cc = require("cryptocompare");
 
@@ -38,6 +39,11 @@ export class AppProvider extends React.Component {
       favorites.push(key);
       this.setState({ favorites });
     }
+  };
+
+  removeCoin = key => {
+    let favorites = [...this.state.favorites]; // take contents of array and updates with new key
+    this.setState({ favorites: _.pull(favorites, key) });
   };
 
   // sets favorite items to localStorage
