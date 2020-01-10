@@ -17,6 +17,7 @@ export class AppProvider extends React.Component {
       ...this.setSettings(), // function sets page to "setting"
       setPage: this.setPage,
       addCoin: this.addCoin,
+      removeCoin: this.removeCoin,
       confirmFavorites: this.confirmFavorites
     };
   }
@@ -41,9 +42,10 @@ export class AppProvider extends React.Component {
     }
   };
 
+  // removes coin key from favorites
   removeCoin = key => {
-    let favorites = [...this.state.favorites]; // take contents of array and updates with new key
-    this.setState({ favorites: _.pull(favorites, key) });
+    let favorites = [...this.state.favorites];
+    this.setState({ favorites: _.pull(favorites, key) }); // pulls selected coin and updates array
   };
 
   // sets favorite items to localStorage
