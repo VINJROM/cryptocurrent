@@ -16,25 +16,22 @@ function clickCoinHandler(topSection, coinKey, addCoin, removeCoin) {
 }
 
 // pulls CoinName, Symbol, and image from CC through coinKey
-export default function({ coinKey, topSection }) {
+export default function({ coinKey, topSection, isInFavorites }) {
   return (
     <AppContext.Consumer>
-      {({ coinList, addCoin, removeCoin }) => {
+      {({ coinList, addCoin, removeCoin, isInFavorites }) => {
         let coin = coinList[coinKey];
 
         let TileClass = SelectableTile;
         if (topSection) {
           TileClass = DeletableTile;
+        } else if (isInFavorites(coinKey)) { // if coin is in favorites, show as DisabledTile
+          TileClass = DisabledTile;
         }
 
         return (
           <TileClass
-            onClick={clickCoinHandler(
-              topSection,
-              coinKey,
-              addCoin,
-              removeCoin
-            )}
+            onClick={clickCoinHandler(topSection, coinKey, addCoin, removeCoin)}
           >
             <CoinHeaderGrid
               topSection={topSection}

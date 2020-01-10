@@ -18,6 +18,7 @@ export class AppProvider extends React.Component {
       setPage: this.setPage,
       addCoin: this.addCoin,
       removeCoin: this.removeCoin,
+      isInFavorites: this.isInFavorites,
       confirmFavorites: this.confirmFavorites
     };
   }
@@ -45,8 +46,11 @@ export class AppProvider extends React.Component {
   // removes coin key from favorites
   removeCoin = key => {
     let favorites = [...this.state.favorites];
-    this.setState({ favorites: _.pull(favorites, key) }); // pulls selected coin and updates array
+    this.setState({ favorites: _.pull(favorites, key) }); // "pulls" selected coin and updates array
   };
+
+  // takes in array and asks if key is in favorites
+  isInFavorites = key => _.includes(this.state.favorites,key)
 
   // sets favorite items to localStorage
   confirmFavorites = () => {
