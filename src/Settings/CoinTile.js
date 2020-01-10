@@ -29,7 +29,7 @@ export default function({ coinKey, topSection }) {
 
         return (
           <TileClass
-            conClick={clickCoinHandler(
+            onClick={clickCoinHandler(
               topSection,
               coinKey,
               addCoin,
