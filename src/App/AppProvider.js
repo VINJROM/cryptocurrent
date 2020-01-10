@@ -61,17 +61,19 @@ export class AppProvider extends React.Component {
     localStorage.setItem(
       "cryptoCurrent",
       JSON.stringify({
-        test: "hello"
+        favorites: this.state.favorites
       })
     );
   };
 
+  // sets page value based on localStorage data
   setSettings() {
     let cryptoCurrentData = JSON.parse(localStorage.getItem("cryptoCurrent")); // gets data from localStorage
     if (!cryptoCurrentData) {
       return { page: "settings", firstVisit: true };
     }
-    return {};
+    let {favorites} = cryptoCurrentData
+    return {favorites};
   }
 
   // function sets page on app
