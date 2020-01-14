@@ -61,7 +61,7 @@ export class AppProvider extends React.Component {
     localStorage.setItem(
       "cryptoCurrent",
       JSON.stringify({
-        favorites: this.state.favorites
+        favorites: this.state.favorites 
       })
     );
   };
