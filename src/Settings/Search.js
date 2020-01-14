@@ -16,6 +16,7 @@ const SearchInput = styled.input`
   place-self: center left; 
 `;
 
+// displays search-confirmation and input-field
 export default () => {
   return (
     <SearchGrid>
