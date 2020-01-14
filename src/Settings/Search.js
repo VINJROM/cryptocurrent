@@ -4,7 +4,7 @@ import {backgroundColor2, fontSize2} from "../Shared/Styles"
 
 const SearchGrid = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 200px 1fr;
 `;
 
 const SearchInput = styled.input`
