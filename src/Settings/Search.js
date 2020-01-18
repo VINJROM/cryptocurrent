@@ -43,6 +43,11 @@ const handleFilter = _.debounce((inputValue, coinList, setFilterCoins) => {
 // targets input value to be captured
 function filterCoins(e, setFilteredCoins, coinList) {
   let inputValue = e.target.value;
+  // if no input value, display unfiltered coin list
+  if (!inputValue) {
+    setFilteredCoins(null);
+    return;
+  }
   handleFilter(inputValue, coinList, setFilteredCoins);
 }
 
