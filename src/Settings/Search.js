@@ -27,9 +27,17 @@ const handleFilter = _.debounce((inputValue, coinList, setFilterCoins) => {
   let allStringsToSearch = coinSymbols.concat(coinNames);
   let fuzzyResults = fuzzy
     .filter(inputValue, allStringsToSearch, {})
-    .map(result => result.string);
-    
-  console.log(fuzzyResults);
+    .map(result => result.string); // maps all array values to string-property
+
+    // returns symbol and/or coin name
+  let filteredCoins = _.pickBy(coinList, (results, symKey) => {
+    let coinName = result.CoinName;
+    return (
+      _.includes(fuzzyResults, symKey) || _.includes(fuzzyResults, coinName) // return if fuzzy-results contain symbol or coinName
+    );
+  });
+  console.log(filteredCoins);
+  setFilterCoins(filteredCoins);
 }, 500);
 
 function filterCoins(e, setFilteredCoins, coinList) {
