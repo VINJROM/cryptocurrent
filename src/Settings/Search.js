@@ -18,7 +18,7 @@ const SearchInput = styled.input`
   color: #1163c9;
   place-self: center left;
 `;
-// debounce delays invoking function displaying input value
+// debounce delays invoking function displaying input
 const handleFilter = _.debounce((inputValue, coinList, setFilterCoins) => {
   // get all coin symbols
   let coinSymbols = Object.keys(coinList);
@@ -29,9 +29,9 @@ const handleFilter = _.debounce((inputValue, coinList, setFilterCoins) => {
     .filter(inputValue, allStringsToSearch, {})
     .map(result => result.string); // maps all array values to string-property
 
-    // returns symbol and/or coin name
+  // returns symbol and or coin name
   let filteredCoins = _.pickBy(coinList, (results, symKey) => {
-    let coinName = result.CoinName;
+    let coinName = results.CoinName;
     return (
       _.includes(fuzzyResults, symKey) || _.includes(fuzzyResults, coinName) // return if fuzzy-results contain symbol or coinName
     );
@@ -40,8 +40,9 @@ const handleFilter = _.debounce((inputValue, coinList, setFilterCoins) => {
   setFilterCoins(filteredCoins);
 }, 500);
 
+// targets input value to be captured
 function filterCoins(e, setFilteredCoins, coinList) {
-  let inputValue = e.target.value; // targets input value to be captured
+  let inputValue = e.target.value;
   handleFilter(inputValue, coinList, setFilteredCoins);
 }
 
