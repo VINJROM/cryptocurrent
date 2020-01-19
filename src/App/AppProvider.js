@@ -24,7 +24,7 @@ export class AppProvider extends React.Component {
     };
   }
 
-  // pulls coins from Crypto Compare
+  // pulls coins from Crypto-Compare
   componentDidMount = () => {
     this.fetchCoins();
   };
@@ -35,11 +35,13 @@ export class AppProvider extends React.Component {
     console.log(coinList);
   };
 
+
   fetchPrices = async () => {
     let prices = await this.prices();
     this.setState({ prices });
   };
 
+  // pulls coin-prices of favorites from CC 
   prices = async () => {
     let returnData = [];
     for (let i = 0; i < this.favorites.length; i++) {
@@ -47,7 +49,7 @@ export class AppProvider extends React.Component {
         let priceData = await cc.priceFull(this.state.favorites[i], "USD");
         returnData.push(priceData);
       } catch (e) {
-        console.warn("Fetch price  error: ", e);
+        console.warn("Fetch price error: ", e);
       }
     }
   };
