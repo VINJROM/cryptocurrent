@@ -27,6 +27,7 @@ export class AppProvider extends React.Component {
   // pulls coins from Crypto-Compare
   componentDidMount = () => {
     this.fetchCoins();
+    this.fetchPrices();
   };
 
   fetchCoins = async () => {
@@ -35,25 +36,26 @@ export class AppProvider extends React.Component {
     console.log(coinList);
   };
 
+  // pulls coin-prices of favorites from CC
   fetchPrices = async () => {
+    if (this.state.firstVisit) return;
     let prices = await this.prices();
     console.log(prices);
     this.setState({ prices });
   };
 
-  // pulls coin-prices of favorites from CC
   prices = async () => {
     let returnData = [];
-    for(let i = 0; i < this.state.favorites.length; i++){
+    for (let i = 0; i < this.state.favorites.length; i++) {
       try {
-        let priceData = await cc.priceFull(this.state.favorites[i], 'USD');
+        let priceData = await cc.priceFull(this.state.favorites[i], "USD");
         returnData.push(priceData);
-      } catch (e){
-        console.warn('Fetch price error: ', e);
+      } catch (e) {
+        console.warn("Fetch price error: ", e);
       }
     }
     return returnData;
-  }
+  };
 
   // adds coin key to favorites
   addCoin = key => {
