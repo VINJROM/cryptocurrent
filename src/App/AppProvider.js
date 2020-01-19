@@ -24,7 +24,7 @@ export class AppProvider extends React.Component {
     };
   }
 
-  // pulls coins from CC
+  // pulls coins from Crypto Compare
   componentDidMount = () => {
     this.fetchCoins();
   };
@@ -33,6 +33,23 @@ export class AppProvider extends React.Component {
     let coinList = (await cc.coinList()).Data;
     this.setState({ coinList });
     console.log(coinList);
+  };
+
+  fetchPrices = async () => {
+    let prices = await this.prices();
+    this.setState({ prices });
+  };
+
+  prices = async () => {
+    let returnData = [];
+    for (let i = 0; i < this.favorites.length; i++) {
+      try {
+        let priceData = await cc.priceFull(this.state.favorites[i], "USD");
+        returnData.push(priceData);
+      } catch (e) {
+        console.warn("Fetch price  error: ", e);
+      }
+    }
   };
 
   // adds coin key to favorites
@@ -53,12 +70,17 @@ export class AppProvider extends React.Component {
   // takes in array and asks if key is in favorites
   isInFavorites = key => _.includes(this.state.favorites, key);
 
-  // sets favorite items to localStorage
+  // defaults first visit to "settings" page; fetches favorites prices; sets favorite items to localStorage
   confirmFavorites = () => {
-    this.setState({
-      firstVisit: false,
-      page: "dashboard"
-    });
+    this.setState(
+      {
+        firstVisit: false,
+        page: "dashboard"
+      },
+      () => {
+        this.fetchPrices();
+      }
+    );
     localStorage.setItem(
       "cryptoCurrent",
       JSON.stringify({
