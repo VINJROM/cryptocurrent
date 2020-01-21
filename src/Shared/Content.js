@@ -1,7 +1,7 @@
 import React from "react";
 import { AppContext } from "../App/AppProvider";
 
-// exports Consumer-- extracts coinList
+// exports Consumer-- extracts coinList; displays loading screen
 export default function(props) {
   return (
     <AppContext.Consumer>
