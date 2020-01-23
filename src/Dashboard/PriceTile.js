@@ -12,6 +12,15 @@ const TickerPrice = styled.div`
   ${fontSizeBig};
 `;
 
+const ChangePct = styled.div`
+  color: green;
+  ${props =>
+    props.red &&
+    css`
+      color: red;
+    `}
+`;
+
 // adds style to selectable tiles
 const PriceTileStyled = styled(SelectableTile)`
   ${props =>
@@ -32,7 +41,11 @@ function PriceTile({ sym, data }) {
     <PriceTileStyled>
       <CoinHeaderGridStyled>
         <div> {sym} </div>
-        <JustifyRight>{numberFormat(data.CHANGEPCT24HOUR)}</JustifyRight>
+        <JustifyRight>
+          <ChangePct red={data.CHANGEPCT24HOUR < 0}>
+            {numberFormat(data.CHANGEPCT24HOUR)}
+          </ChangePct>
+        </JustifyRight>
       </CoinHeaderGridStyled>
       <TickerPrice>${data.PRICE}</TickerPrice>
     </PriceTileStyled>
