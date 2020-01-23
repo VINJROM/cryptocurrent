@@ -26,7 +26,7 @@ const numberFormat = number => {
   return +(number + "").slice(0, 7);
 };
 
-// pulls symbol and change in coin price from last 24 hours
+// pulls data symbol, coin price, and change in price from last 24 hours
 function PriceTile({ sym, data }) {
   return (
     <PriceTileStyled>
@@ -34,7 +34,7 @@ function PriceTile({ sym, data }) {
         <div> {sym} </div>
         <JustifyRight>{numberFormat(data.CHANGEPCT24HOUR)}</JustifyRight>
       </CoinHeaderGridStyled>
-      <TickerPrice>{data.PRICE}</TickerPrice>
+      <TickerPrice>${data.PRICE}</TickerPrice>
     </PriceTileStyled>
   );
 }
