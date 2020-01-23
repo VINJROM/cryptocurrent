@@ -1,12 +1,16 @@
 import React from "react";
 import styled, { css } from "styled-components";
 import { SelectableTile } from "../Shared/Tile";
-import { fontSize3 } from "../Shared/Styles";
+import { fontSize3, fontSizeBig } from "../Shared/Styles";
 import { CoinHeaderGridStyled } from "../Settings/CoinHeaderGrid";
 
-const numberFormat = number => {
-  return +(number + "").slice(0, 7);
-};
+const JustifyRight = styled.div`
+  justify-self: right;
+`;
+
+const TickerPrice = styled.div`
+  ${fontSizeBig};
+`;
 
 // adds style to selectable tiles
 const PriceTileStyled = styled(SelectableTile)`
@@ -17,14 +21,20 @@ const PriceTileStyled = styled(SelectableTile)`
     `}
 `;
 
+// converts number to string and formats coin-price decimal
+const numberFormat = number => {
+  return +(number + "").slice(0, 7);
+};
+
+// pulls symbol and change in coin price from last 24 hours
 function PriceTile({ sym, data }) {
   return (
     <PriceTileStyled>
       <CoinHeaderGridStyled>
-        <div>
-          {sym} {numberFormat(data.CHANGEPCT24HOUR)}
-        </div>
+        <div> {sym} </div>
+        <JustifyRight>{numberFormat(data.CHANGEPCT24HOUR)}</JustifyRight>
       </CoinHeaderGridStyled>
+      <TickerPrice>{data.PRICE}</TickerPrice>
     </PriceTileStyled>
   );
 }
@@ -33,9 +43,5 @@ function PriceTile({ sym, data }) {
 export default ({ price, index }) => {
   let sym = Object.keys(price)[0];
   let data = price[sym]["USD"];
-  return (
-    <PriceTile sym={sym} data={data}>
-      {sym} {data.PRICE}
-    </PriceTile>
-  );
+  return <PriceTile sym={sym} data={data}></PriceTile>;
 };
