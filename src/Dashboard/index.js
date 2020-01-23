@@ -4,8 +4,8 @@ import PriceGrid from "./PriceGrid";
 
 export default () => {
   return (
-    <page name="dashboard">
+    <Page name="dashboard">
       <PriceGrid />
-    </page>
+    </Page>
   );
 };

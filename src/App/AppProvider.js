@@ -44,6 +44,7 @@ export class AppProvider extends React.Component {
     this.setState({ prices });
   };
 
+  // returns promise array of coin prices
   prices = async () => {
     let returnData = [];
     for (let i = 0; i < this.state.favorites.length; i++) {
@@ -55,6 +56,15 @@ export class AppProvider extends React.Component {
       }
     }
     return returnData;
+  };
+
+  // filters out price objects that have no keys
+  fetchPrices = async () => {
+    if (this.state.firstVisit) return;
+    let prices = await this.prices();
+    // We must filter the empty price objects
+    prices = prices.filter(price => Object.keys(price).length);
+    this.setState({ prices });
   };
 
   // adds coin key to favorites
