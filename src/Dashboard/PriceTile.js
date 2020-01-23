@@ -35,17 +35,23 @@ const numberFormat = number => {
   return +(number + "").slice(0, 7);
 };
 
+function ChangePercent({ data }) {
+  return (
+    <JustifyRight>
+      <ChangePct red={data.CHANGEPCT24HOUR < 0}>
+        {numberFormat(data.CHANGEPCT24HOUR)}
+      </ChangePct>
+    </JustifyRight>
+  );
+}
+
 // pulls data symbol, coin price, and change in price from last 24 hours
 function PriceTile({ sym, data }) {
   return (
     <PriceTileStyled>
       <CoinHeaderGridStyled>
         <div> {sym} </div>
-        <JustifyRight>
-          <ChangePct red={data.CHANGEPCT24HOUR < 0}>
-            {numberFormat(data.CHANGEPCT24HOUR)}
-          </ChangePct>
-        </JustifyRight>
+        <ChangePercent data={data} />
       </CoinHeaderGridStyled>
       <TickerPrice>${data.PRICE}</TickerPrice>
     </PriceTileStyled>
