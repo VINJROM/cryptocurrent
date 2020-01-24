@@ -87,10 +87,12 @@ export class AppProvider extends React.Component {
 
   // defaults first visit to "settings" page; fetches favorites prices; sets favorite items to localStorage
   confirmFavorites = () => {
+    let currentFavorite = this.state.favorites[0];
     this.setState(
       {
         firstVisit: false,
-        page: "dashboard"
+        page: "dashboard",
+        currentFavorite
       },
       () => {
         this.fetchPrices();
@@ -99,7 +101,8 @@ export class AppProvider extends React.Component {
     localStorage.setItem(
       "cryptoCurrent",
       JSON.stringify({
-        favorites: this.state.favorites
+        favorites: this.state.favorites,
+        currentFavorite
       })
     );
   };
@@ -110,8 +113,8 @@ export class AppProvider extends React.Component {
     if (!cryptoCurrentData) {
       return { page: "settings", firstVisit: true };
     }
-    let { favorites } = cryptoCurrentData;
-    return { favorites };
+    let { favorites, currentFavorite } = cryptoCurrentData;
+    return { favorites, currentFavorite };
   }
 
   // function sets page on app
