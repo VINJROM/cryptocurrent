@@ -92,7 +92,7 @@ export class AppProvider extends React.Component {
       {
         firstVisit: false,
         page: "dashboard",
-        currentFavorite
+        currentFavorite // creates key value pair of currentFavorites
       },
       () => {
         this.fetchPrices();
@@ -101,7 +101,7 @@ export class AppProvider extends React.Component {
     localStorage.setItem(
       "cryptoCurrent",
       JSON.stringify({
-        favorites: this.state.favorites,
+        favorites: this.state.favorites, // sets favorites to local storage
         currentFavorite
       })
     );
