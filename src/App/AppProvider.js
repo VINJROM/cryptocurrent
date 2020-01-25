@@ -20,6 +20,7 @@ export class AppProvider extends React.Component {
       removeCoin: this.removeCoin,
       isInFavorites: this.isInFavorites,
       confirmFavorites: this.confirmFavorites,
+      setCurrentFavorite: this.setCurrentFavorite,
       setFilteredCoins: this.setFilteredCoins
     };
   }
@@ -103,6 +104,20 @@ export class AppProvider extends React.Component {
       JSON.stringify({
         favorites: this.state.favorites, // sets favorites to local storage
         currentFavorite
+      })
+    );
+  };
+
+  // merges parsed currentFavorites string to local storage; sets state of local storage to contain current favorites
+  setCurrentFavorite = sym => {
+    this.setState({
+      currentFavorite: sym
+    });
+    localStorage.setItem(
+      "cryptoCurrent",
+      JSON.stringify({
+        ...JSON.parse(localStorage.getItem("cryptoCurrent")),
+        currentFavorite: sym
       })
     );
   };

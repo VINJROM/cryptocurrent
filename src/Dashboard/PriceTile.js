@@ -3,6 +3,7 @@ import styled, { css } from "styled-components";
 import { SelectableTile } from "../Shared/Tile";
 import { fontSize3, fontSizeBig, greenBoxShadow } from "../Shared/Styles";
 import { CoinHeaderGridStyled } from "../Settings/CoinHeaderGrid";
+import { AppContext } from "../App/AppProvider";
 
 const JustifyRight = styled.div`
   justify-self: right;
@@ -61,9 +62,12 @@ function ChangePercent({ data }) {
 }
 
 // pulls data symbol, coin price, and change in price from last 24 hours
-function PriceTile({ sym, data }) {
+function PriceTile({ sym, data, currentFavorite, setCurrentFavorite }) {
   return (
-    <PriceTileStyled>
+    <PriceTileStyled
+      onClick={setCurrentFavorite}
+      currentFavorite={currentFavorite}
+    >
       <CoinHeaderGridStyled>
         <div> {sym} </div>
         <ChangePercent data={data} />
@@ -74,9 +78,13 @@ function PriceTile({ sym, data }) {
 }
 
 // displayed compact version of PriceTile
-function PriceTileCompact({ sym, data }) {
+function PriceTileCompact({ sym, data, currentFavorite, setCurrentFavorite }) {
   return (
-    <PriceTileStyled compact>
+    <PriceTileStyled
+      onClick={setCurrentFavorite}
+      compact
+      currentFavorite={currentFavorite}
+    >
       <JustifyLeft>{sym}</JustifyLeft>
       <ChangePercent data={data} />
       <div>${numberFormat(data.PRICE)}</div>
@@ -91,14 +99,14 @@ export default ({ price, index }) => {
   let TileClass = index < 5 ? PriceTile : PriceTileCompact; // if below top row, display compact price tile
   return (
     <AppContext.Consumer>
-      {({ currentFavorite }) => (
+      {({ currentFavorite, setCurrentFavorite }) => (
         <TileClass
           sym={sym}
           data={data}
-          currentFavorite={currentFavorite === sym}
+          currentFavorite={currentFavorite === sym} // sets first favorite to currentFavorite
+          setCurrentFavorite={() => setCurrentFavorite(sym)}
         ></TileClass>
       )}
-      }
     </AppContext.Consumer>
   );
 };
