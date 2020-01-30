@@ -1,15 +1,17 @@
 import highchartsConfig from "./HighchartsConfig";
-import react from "react";
-import { TIle } from "../Shared/Tile";
+import React from "react";
+import { Tile } from "../Shared/Tile";
 import { AppContext } from "../App/AppProvider";
-import ReactHighcharts from "react-highchart";
+import ReactHighcharts from "react-highcharts";
 
 export default () => {
   return (
     <AppContext.Consumer>
-      <Tile>
-        <ReactHighcharts config={highchartsConfig()} />
-      </Tile>
+      {({}) => 
+        <Tile>
+          <ReactHighcharts config={highchartsConfig()} />
+        </Tile>
+      }
     </AppContext.Consumer>
   );
 };
