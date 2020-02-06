@@ -2,13 +2,7 @@ export default {
     colors: ['#DDDF0D', '#55BF3B', '#DF5353', '#7798BF', '#aaeeee',
         '#ff0066', '#eeaaee', '#55BF3B', '#DF5353', '#7798BF', '#aaeeee'],
     chart: {
-        backgroundColor: {
-            linearGradient: { x1: 0, y1: 0, x2: 1, y2: 1 },
-            stops: [
-                [0, 'rgb(48, 48, 96)'],
-                [1, 'rgb(0, 0, 0)']
-            ]
-        },
+        backgroundColor: '#061a44',
         borderColor: '#000000',
         borderWidth: 2,
         className: 'dark-container',
