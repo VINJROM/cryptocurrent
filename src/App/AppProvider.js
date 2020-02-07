@@ -1,11 +1,12 @@
 import React from "react";
 import _ from "lodash";
-
+import moment from "moment";
 const cc = require("cryptocompare");
 
 export const AppContext = React.createContext();
 
 const MAX_FAVORITES = 10;
+const TIME_UNITS = 10;
 
 // sets up favorites-provider to be used by consumer
 export class AppProvider extends React.Component {
@@ -29,8 +30,10 @@ export class AppProvider extends React.Component {
   componentDidMount = () => {
     this.fetchCoins();
     this.fetchPrices();
+    this.fetchHistorical();
   };
 
+  // pulls coin-list data
   fetchCoins = async () => {
     let coinList = (await cc.coinList()).Data;
     this.setState({ coinList });
@@ -66,6 +69,30 @@ export class AppProvider extends React.Component {
     // We must filter the empty price objects
     prices = prices.filter(price => Object.keys(price).length);
     this.setState({ prices });
+  };
+
+  // displays cc price over 10 decrements of time
+  historical = () => {
+    let promises = [];
+    for (let units = TIME_UNITS; units > 0; units--) {
+      promises.push(
+        cc.priceHistorical(
+          this.state.currentFavorite,
+          ["USD"],
+          moment()
+            .subtract({ months: units })
+            .toDate()
+        )
+      );
+    }
+    return Promise.all(promises);
+  };
+
+  // fetches historical currency data
+  fetchHistorical = async () => {
+    if (this.state.firstVisit) return;
+    let results = await this.historical();
+    console.log('results', results)
   };
 
   // adds coin key to favorites
