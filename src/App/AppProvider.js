@@ -48,6 +48,24 @@ export class AppProvider extends React.Component {
     this.setState({ prices });
   };
 
+  // fetches historical currency data
+  fetchHistorical = async () => {
+    if (this.state.firstVisit) return;
+    let results = await this.historical();
+    let historical = [
+      {
+        name: this.state.currentFavorite,
+        data: results.map((ticker, index) => [
+          moment()
+            .subtract({ months: TIME_UNITS - index })
+            .valueOf(),
+          ticker.USD
+        ])
+      }
+    ];
+    this.setState({historical});
+  };
+
   // returns promise array of coin prices
   prices = async () => {
     let returnData = [];
@@ -61,6 +79,7 @@ export class AppProvider extends React.Component {
     }
     return returnData;
   };
+
 
   // filters out price objects that have no keys
   fetchPrices = async () => {
@@ -86,13 +105,6 @@ export class AppProvider extends React.Component {
       );
     }
     return Promise.all(promises);
-  };
-
-  // fetches historical currency data
-  fetchHistorical = async () => {
-    if (this.state.firstVisit) return;
-    let results = await this.historical();
-    console.log('results', results)
   };
 
   // adds coin key to favorites
