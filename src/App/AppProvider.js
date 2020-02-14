@@ -52,6 +52,7 @@ export class AppProvider extends React.Component {
   fetchHistorical = async () => {
     if (this.state.firstVisit) return;
     let results = await this.historical();
+    console.log("results", results);
     let historical = [
       {
         name: this.state.currentFavorite,
@@ -63,7 +64,7 @@ export class AppProvider extends React.Component {
         ])
       }
     ];
-    this.setState({historical});
+    this.setState({ historical });
   };
 
   // returns promise array of coin prices
@@ -79,7 +80,6 @@ export class AppProvider extends React.Component {
     }
     return returnData;
   };
-
 
   // filters out price objects that have no keys
   fetchPrices = async () => {
@@ -149,9 +149,13 @@ export class AppProvider extends React.Component {
 
   // merges parsed currentFavorites string to local storage; sets state of local storage to contain current favorites
   setCurrentFavorite = sym => {
-    this.setState({
-      currentFavorite: sym
-    });
+    this.setState(
+      {
+        currentFavorite: sym,
+        historical: null
+      },
+      this.fetchHistorical
+    );
     localStorage.setItem(
       "cryptoCurrent",
       JSON.stringify({
