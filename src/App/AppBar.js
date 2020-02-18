@@ -33,13 +33,14 @@ function toProperCase(lower) {
 }
 
 // houses the dashboard and settings buttons
-function ControlButton({ name, active }) {
+function ControlButton({ name }) {
   return (
     <AppContext.Consumer>
-      {({ page, setPage }) => (
+      {({ firstVisit, page, setPage }) => (
         <ControlButtonHover
           active={page === name}
           onClick={() => setPage(name)} // sets name to state
+          hidden ={firstVisit && page === 'dashboard'}
         >
           {toProperCase(name)}
         </ControlButtonHover>
