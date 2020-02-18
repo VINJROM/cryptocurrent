@@ -9,6 +9,7 @@ export default (historical) => {
         text: "Price"
       }
     },
+    xAxis: { type: "datetime" },
     legend: {
       layout: "vertical",
       align: "right",
