@@ -15,6 +15,7 @@ export class AppProvider extends React.Component {
     this.state = {
       page: "dashboard",
       favorites: ["APEX", "BTC", "CACH", "DOGE"],
+      timeInterval: 'months',
       ...this.setSettings(), // function sets page to "setting"
       setPage: this.setPage,
       addCoin: this.addCoin,
@@ -22,7 +23,8 @@ export class AppProvider extends React.Component {
       isInFavorites: this.isInFavorites,
       confirmFavorites: this.confirmFavorites,
       setCurrentFavorite: this.setCurrentFavorite,
-      setFilteredCoins: this.setFilteredCoins
+      setFilteredCoins: this.setFilteredCoins,
+      changeChartSelect: this.changeChartSelect
     };
   }
 
@@ -58,7 +60,7 @@ export class AppProvider extends React.Component {
         name: this.state.currentFavorite,
         data: results.map((ticker, index) => [
           moment()
-            .subtract({ months: TIME_UNITS - index })
+            .subtract({ [this.state.timeInterval]: TIME_UNITS - index })
             .valueOf(),
           ticker.USD
         ])
@@ -99,7 +101,7 @@ export class AppProvider extends React.Component {
           this.state.currentFavorite,
           ["USD"],
           moment()
-            .subtract({ months: units })
+            .subtract({ [this.state.timeInterval]: units })
             .toDate()
         )
       );
@@ -180,6 +182,13 @@ export class AppProvider extends React.Component {
 
   // sets filteredCoin
   setFilteredCoins = filteredCoins => this.setState({ filteredCoins });
+
+
+  //  changes time interval
+  changeChartSelect = value => {
+    console.log(value)
+    this.setState({timeInterval: value});
+  }
 
   render() {
     return (
