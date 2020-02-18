@@ -15,7 +15,7 @@ export class AppProvider extends React.Component {
     this.state = {
       page: "dashboard",
       favorites: ["APEX", "BTC", "CACH", "DOGE"],
-      timeInterval: 'months',
+      timeInterval: "months",
       ...this.setSettings(), // function sets page to "setting"
       setPage: this.setPage,
       addCoin: this.addCoin,
@@ -183,12 +183,13 @@ export class AppProvider extends React.Component {
   // sets filteredCoin
   setFilteredCoins = filteredCoins => this.setState({ filteredCoins });
 
-
   //  changes time interval
   changeChartSelect = value => {
-    console.log(value)
-    this.setState({timeInterval: value});
-  }
+    this.setState(
+      { timeInterval: value, historical: null },
+      this.fetchHistorical
+    );
+  };
 
   render() {
     return (
