@@ -40,7 +40,7 @@ function ControlButton({ name }) {
         <ControlButtonHover
           active={page === name}
           onClick={() => setPage(name)} // sets name to state
-          hidden ={firstVisit && page === 'dashboard'}
+          hidden ={firstVisit && name === 'dashboard'}
         >
           {toProperCase(name)}
         </ControlButtonHover>
