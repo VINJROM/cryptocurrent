@@ -17,5 +17,5 @@ The result is a CryptoCurrency Financial Reporting App where users can use to qu
 
 - [CryptoCompare API](https://min-api.cryptocompare.com/ "CryptoCompare API") - Fetch current CryptoCurrency price data.
 
-- [Momment.js](https://momentjs.com/ "Moment") - Parse, validate, manipulate, and display dates and times in JavaScript.
+- [Moment.js](https://momentjs.com/ "Moment") - Parse, validate, manipulate, and display dates and times in JavaScript.
 
