@@ -13,9 +13,13 @@ The result is a CryptoCurrency Financial Reporting App where users can use to qu
 ## Technologies Used
 - [React.js](https://reactjs.org/ "React.js"). A JavaScript library for building user interfaces.
 
-- [HighCharts](https://api.earth911.com/ "Earth911 Search API") - Set up interactive charts to graph historical data.
+- [HighCharts](https://api.earth911.com/ "HighCharts") - Set up interactive charts to graph historical data.
 
 - [CryptoCompare API](https://min-api.cryptocompare.com/ "CryptoCompare API") - Fetch current CryptoCurrency price data.
 
 - [Moment.js](https://momentjs.com/ "Moment") - Parse, validate, manipulate, and display dates and times in JavaScript.
+
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app "React.js"). Check out the preview page [here](https://cryptocurrent-dashboard.herokuapp.com/ "CryptoCurrent").
+
 
