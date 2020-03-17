@@ -1,3 +1,5 @@
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app "React.js"). Check out the preview page [here](https://cryptocurrent-dashboard.herokuapp.com/ "CryptoCurrent").
+
 # CryptoCurrent Dashboard
 This application utilizes React, Highcharts, and CryptocCompare API to display CryptoCurrencies in graphical format in real-time.
 
@@ -19,7 +21,5 @@ The result is a CryptoCurrency Financial Reporting App where users can use to qu
 
 - [Moment.js](https://momentjs.com/ "Moment") - Parse, validate, manipulate, and display dates and times in JavaScript.
 
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app "React.js"). Check out the preview page [here](https://cryptocurrent-dashboard.herokuapp.com/ "CryptoCurrent").
 
 
