@@ -1,7 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app "React.js"). Check out the preview page [here](https://cryptocurrent-dashboard.herokuapp.com/ "CryptoCurrent").
 
 # CryptoCurrent Dashboard
-This application utilizes React, Highcharts, and CryptocCompare API to display CryptoCurrencies in graphical format in real-time.
+This application utilizes React, Highcharts, and CryptocCompare API to display current CryptoCurrencies in graphical format.
 
 ## Feature Overview
 CryptoCurrent is a quick way to browse, favorite, and display CryptoCurrency values in graphical format over a span of days, weeks, and months.
@@ -10,7 +10,7 @@ CryptoCurrent is a quick way to browse, favorite, and display CryptoCurrency val
 This project is part of React.School React Project Tutorials in which students utilize their React.js, CSS Grid, HighCharts, CryptoCompare API, and localStorage-accessing capabilities.
 
 ## Result
-The result is a CryptoCurrency Financial Reporting App where users can use to quickly browse, save, and fetch CryptoCurrency data..
+The result is a CryptoCurrency Financial Reporting App where users can use to quickly browse, save, and fetch CryptoCurrency data.
 
 ## Technologies Used
 - [React.js](https://reactjs.org/ "React.js"). A JavaScript library for building user interfaces.
