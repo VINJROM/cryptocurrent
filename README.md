@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 This application utilizes React, Highcharts, and CryptocCompare API to display current CryptoCurrencies in graphical format.
 
 ## Feature Overview
-CryptoCurrent is a quick way to browse, favorite, and display CryptoCurrency values in graphical format over a span of days, weeks, and months.
+CryptoCurrent is a quick way to browse, favorite, and display CryptoCurrency values over a span of days, weeks, and months.
 
 ## Motivation
 This project is part of React.School React Project Tutorials in which students utilize their React.js, CSS Grid, HighCharts, CryptoCompare API, and localStorage-accessing capabilities.
