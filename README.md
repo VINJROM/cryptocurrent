@@ -15,7 +15,7 @@ The result is a CryptoCurrency Financial Reporting App where users can use to qu
 ## Technologies Used
 - [React.js](https://reactjs.org/ "React.js"). A JavaScript library for building user interfaces.
 
-- [HighCharts](https://api.earth911.com/ "HighCharts") - Set up interactive charts to graph historical data.
+- [HighCharts](https://www.highcharts.com/demo "HighCharts") - Set up interactive charts to graph historical data.
 
 - [CryptoCompare API](https://min-api.cryptocompare.com/ "CryptoCompare API") - Fetch current CryptoCurrency price data.
 
