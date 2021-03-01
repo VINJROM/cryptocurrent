@@ -11,7 +11,7 @@ This project is part of React.School React Project Tutorials in which students u
 
 ## Result
 I learned how to connect React.js to CryptoCompare API, use React's callback functions to visulally display targeted API values, and store favorited cryptocurrencies in local state.
-The result is a CryptoCurrency Financial Reporting App where users can use to quickly browse, save, and fetch CryptoCurrency data.
+The result is a CryptoCurrency Financial Reporting App where users can use to quickly browse, save, fetch, and visualize CryptoCurrency data over a specified time.
 
 ## Technologies Used
 - [React.js](https://reactjs.org/ "React.js"). A JavaScript library for building user interfaces.
