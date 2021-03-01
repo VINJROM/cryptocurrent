@@ -10,7 +10,7 @@ CryptoCurrent is a quick way to browse, favorite, and display CryptoCurrency val
 This project is part of React.School React Project Tutorials in which students utilize their React.js, CSS Grid, HighCharts, CryptoCompare API, and localStorage-accessing capabilities.
 
 ## Result
-I learned how to connect React.js to CryptoCompare API and use React's callback functions to visulally display targeted API values.
+I learned how to connect React.js to CryptoCompare API, use React's callback functions to visulally display targeted API values, and store favorited cryptocurrencies in local state.
 The result is a CryptoCurrency Financial Reporting App where users can use to quickly browse, save, and fetch CryptoCurrency data.
 
 ## Technologies Used
